@@ -1,0 +1,2 @@
+[mern]
+Mandar-mern-app ansible_host=54.187.170.60 ansible_user=ubuntu ansible_ssh_private_key_file=/home/mandar/Downloads/MandarDevOps.pem

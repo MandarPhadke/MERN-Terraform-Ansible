@@ -1,0 +1,37 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install Node.js
+  apt:
+    name: nodejs
+    state: present
+
+- name: Install npm
+  apt:
+    name: npm
+    state: present
+
+- name: Install PM2 globally
+  npm:
+    name: pm2
+    global: yes
+
+- name: Copy application files
+  copy:
+    src: /home/mandar/DevOps/TravelMemory
+    dest: /
+    owner: ubuntu
+    group: ubuntu
+    mode: 0755
+
+- name: Install application dependencies
+  command: npm install
+  args:
+    chdir: /
+
+- name: Start application with PM2
+  command: pm2 start app.js
+  args:
+    chdir: /
